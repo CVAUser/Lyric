@@ -12,10 +12,19 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    private var navigationController: NavigationViewController?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        
+        //Привязка опционала для проверки значения
+        if let window = self.window {
+            navigationController = NavigationViewController(rootViewController: LyricViewController())
+            window.rootViewController = navigationController
+            window.makeKeyAndVisible()
+        }
         return true
     }
 
