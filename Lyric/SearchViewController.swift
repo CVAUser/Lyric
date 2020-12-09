@@ -15,10 +15,14 @@ class SearchViewController: UIViewController {
         view.backgroundColor = UIColor.lightGray
         
         //MARK: - Config navigation interface
+        
         //Создание правой кнопки навигационного бара
         let done = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(selectionComplete))
-        
         self.navigationItem.setRightBarButton(done, animated: true)
+        
+        //Заголовок контроллера в навигационном баре
+        self.navigationItem.title = "Search"
+        
     }
     
 
