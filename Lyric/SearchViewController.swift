@@ -23,6 +23,9 @@ class SearchViewController: UIViewController {
         //Заголовок контроллера в навигационном баре
         self.navigationItem.title = "Search"
         
+        //MARK: -  Query fields
+        
+        view.addSubview(QueryContentView.init(frame: CGRect(x:0, y:0, width: 300, height: 300)))
     }
     
 
