@@ -12,19 +12,20 @@ class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.green
-        // Do any additional setup after loading the view.
+        view.backgroundColor = UIColor.lightGray
+        
+        //MARK: - Config navigation interface
+        //Создание правой кнопки навигационного бара
+        let done = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(selectionComplete))
+        
+        self.navigationItem.setRightBarButton(done, animated: true)
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @objc func selectionComplete() {
+        
     }
-    */
+    
 
 }
