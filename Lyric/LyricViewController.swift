@@ -13,9 +13,9 @@ class LyricViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.blue
+        self.title = "Lyric List"
         // Do any additional setup after loading the view.
     }
-    
 
     /*
     // MARK: - Navigation

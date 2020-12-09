@@ -12,16 +12,21 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    private var navigationController: NavigationViewController?
+    var navigationController: NavigationViewController?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        //Используеться для storyboard, если нет storyboard,
+        //можно использовать для собственного окна
         self.window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let lyricViewController = LyricViewController.init(nibName: nil, bundle: nil)
+        lyricViewController.navigationItem.setRightBarButton(UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: nil), animated: true)
         
         //Привязка опционала для проверки значения
         if let window = self.window {
-            navigationController = NavigationViewController(rootViewController: LyricViewController())
+            navigationController = NavigationViewController(rootViewController: lyricViewController)
             window.rootViewController = navigationController
             window.makeKeyAndVisible()
         }
