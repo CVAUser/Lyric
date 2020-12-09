@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         //Используеться для storyboard, если нет storyboard,
-        //можно использовать для собственного окна
+        //можно использовать для собственных нужд
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
         let lyricViewController = LyricViewController.init(nibName: nil, bundle: nil)
