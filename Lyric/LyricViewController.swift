@@ -12,19 +12,18 @@ class LyricViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.blue
-        self.title = "Lyric List"
-        // Do any additional setup after loading the view.
+        view.backgroundColor = UIColor.lightGray
+        self.navigationItem.title = "Lyric List"
+        
+        //MARK: - Config navigation interface
+        
+        let addLyric = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(searchLyric))
+        self.navigationItem.setRightBarButton(addLyric, animated: true)
     }
 
-    /*
-    // MARK: - Navigation
+    @objc func searchLyric() {
+        let searchViewController = SearchViewController.init(nibName: nil, bundle: nil)
+        self.navigationController?.pushViewController(searchViewController, animated: true)
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
-
 }

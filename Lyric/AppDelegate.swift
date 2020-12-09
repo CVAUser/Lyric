@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
         let lyricViewController = LyricViewController.init(nibName: nil, bundle: nil)
-        lyricViewController.navigationItem.setRightBarButton(UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: nil), animated: true)
+
         
         //Привязка опционала для проверки значения
         if let window = self.window {
