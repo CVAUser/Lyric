@@ -23,7 +23,9 @@ class LyricViewController: UIViewController {
 
     @objc func searchLyric() {
         let searchViewController = SearchViewController.init(nibName: nil, bundle: nil)
-        self.navigationController?.pushViewController(searchViewController, animated: true)
+        if let naviVC = self.navigationController {
+            naviVC.pushViewController(searchViewController, animated: true)
+        }
 
     }
 }
