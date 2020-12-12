@@ -12,7 +12,7 @@ class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.lightGray
+        view.backgroundColor = UIColor.white
         
         //MARK: - Config navigation interface
         
@@ -23,9 +23,15 @@ class SearchViewController: UIViewController {
         //Заголовок контроллера в навигационном баре
         self.navigationItem.title = "Search"
         
-        //MARK: -  Query fields
+        //MARK: -  Query elements
         
-        view.addSubview(QueryContentView.init(frame: CGRect(x:0, y:0, width: 300, height: 300)))
+        let queryElements = QueryContentView()
+        queryElements.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(queryElements)
+        queryElements.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        queryElements.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        queryElements.heightAnchor.constraint(equalToConstant: view.frame.height/2).isActive = true
+        
     }
     
 
