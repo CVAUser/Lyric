@@ -13,7 +13,7 @@
 		04C95946257FB97C0089A627 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C95945257FB97C0089A627 /* NavigationViewController.swift */; };
 		04C95948257FBF000089A627 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C95947257FBF000089A627 /* SearchViewController.swift */; };
 		04C9594A257FC0050089A627 /* LyricViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C95949257FC0050089A627 /* LyricViewController.swift */; };
-		04C9594C25811C3D0089A627 /* QueryContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C9594B25811C3D0089A627 /* QueryContentView.swift */; };
+		04C9594C25811C3D0089A627 /* SearchContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C9594B25811C3D0089A627 /* SearchContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		04C95945257FB97C0089A627 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		04C95947257FBF000089A627 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		04C95949257FC0050089A627 /* LyricViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricViewController.swift; sourceTree = "<group>"; };
-		04C9594B25811C3D0089A627 /* QueryContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryContentView.swift; sourceTree = "<group>"; };
+		04C9594B25811C3D0089A627 /* SearchContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +62,7 @@
 				04C95945257FB97C0089A627 /* NavigationViewController.swift */,
 				04C95949257FC0050089A627 /* LyricViewController.swift */,
 				04C95947257FBF000089A627 /* SearchViewController.swift */,
-				04C9594B25811C3D0089A627 /* QueryContentView.swift */,
+				04C9594B25811C3D0089A627 /* SearchContentView.swift */,
 				04AEDAA425757FCC00C7B081 /* Assets.xcassets */,
 				04AEDAA625757FCC00C7B081 /* LaunchScreen.storyboard */,
 				04AEDAA925757FCC00C7B081 /* Info.plist */,
@@ -140,7 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04C9594C25811C3D0089A627 /* QueryContentView.swift in Sources */,
+				04C9594C25811C3D0089A627 /* SearchContentView.swift in Sources */,
 				04C95948257FBF000089A627 /* SearchViewController.swift in Sources */,
 				04C95946257FB97C0089A627 /* NavigationViewController.swift in Sources */,
 				04C9594A257FC0050089A627 /* LyricViewController.swift in Sources */,

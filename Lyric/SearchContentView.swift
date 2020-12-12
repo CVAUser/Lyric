@@ -1,5 +1,5 @@
 //
-//  QueryContentView.swift
+//  SearchContentView.swift
 //  Lyric
 //
 //  Created by Slava on 09.12.2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class QueryContentView: UIView {
+class SearchContentView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

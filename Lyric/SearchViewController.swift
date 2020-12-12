@@ -25,7 +25,7 @@ class SearchViewController: UIViewController {
         
         //MARK: -  Query elements
         
-        let queryElements = QueryContentView()
+        let queryElements = SearchContentView()
         queryElements.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(queryElements)
         queryElements.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
