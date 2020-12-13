@@ -30,7 +30,7 @@ class SearchViewController: UIViewController {
         view.addSubview(searchContent)
         searchContent.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         searchContent.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        searchContent.heightAnchor.constraint(equalToConstant: view.frame.height/2).isActive = true
+        searchContent.heightAnchor.constraint(equalToConstant: view.frame.height).isActive = true
         searchContent.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
     }
