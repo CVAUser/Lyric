@@ -15,7 +15,7 @@ class LyricViewController: UIViewController {
         view.backgroundColor = UIColor.lightGray
         self.navigationItem.title = "Lyric List"
         
-        //MARK: - Config navigation interface
+//MARK: - Config navigation interface
         
         let addLyric = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(searchLyric))
         self.navigationItem.setRightBarButton(addLyric, animated: true)

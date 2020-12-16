@@ -12,29 +12,27 @@ class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
-        
-        //MARK: - Config navigation interface
-        
-        //Создание правой кнопки навигационного бара
+        view.backgroundColor = .white
+
+//MARK: - Config navigation interface
+//Создание правой кнопки навигационного бара
         let done = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(selectionComplete))
         self.navigationItem.setRightBarButton(done, animated: true)
         
-        //Заголовок контроллера в навигационном баре
+//Заголовок контроллера в навигационном баре
         self.navigationItem.title = "Search"
         
-        //MARK: -  Query elements
+        //MARK: -  Content of search elements
         
         let searchContent = SearchContentView()
         view.addSubview(searchContent)
-        
+//Layout
         searchContent.translatesAutoresizingMaskIntoConstraints = false
         let safeArea = view.safeAreaLayoutGuide
-        searchContent.topAnchor.constraint(equalToSystemSpacingBelow: safeArea.topAnchor, multiplier: 1.0).isActive = true
-        safeArea.bottomAnchor.constraint(equalToSystemSpacingBelow: searchContent.bottomAnchor, multiplier: 1.0).isActive = true
+        searchContent.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
+        safeArea.bottomAnchor.constraint(equalTo: searchContent.bottomAnchor).isActive = true
         searchContent.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         searchContent.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        
     }
     
 

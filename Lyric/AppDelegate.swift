@@ -17,14 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        //Используеться для storyboard, если нет storyboard,
-        //можно использовать для собственных нужд
+//Используеться для storyboard, если нет storyboard,
+//можно использовать для собственных нужд
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
         let lyricViewController = LyricViewController.init(nibName: nil, bundle: nil)
 
         
-        //Привязка опционала для проверки значения
+//Привязка опционала для проверки значения
         if let window = self.window {
             navigationController = NavigationViewController(rootViewController: lyricViewController)
             window.rootViewController = navigationController

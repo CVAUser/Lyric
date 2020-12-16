@@ -29,7 +29,7 @@ class SearchContentView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: Customize search fields
+//MARK: Customize search fields
     
     func customizeSearchArtist() {
         searchArtist.translatesAutoresizingMaskIntoConstraints = false
