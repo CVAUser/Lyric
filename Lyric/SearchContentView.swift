@@ -20,9 +20,9 @@ class SearchContentView: UIView {
         addSubview(track)
         addSubview(send)
         
-        customizeSearchArtist()
-        customizeSeaarchButton()
-        customizeSearchTrack()
+        customizeArtist()
+        customizeSend()
+        customizeTrack()
         
     }
     required init?(coder aDecoder: NSCoder) {
@@ -31,7 +31,7 @@ class SearchContentView: UIView {
     
 //MARK: Customize search fields
     
-    func customizeSearchArtist() {
+    func customizeArtist() {
         artist.translatesAutoresizingMaskIntoConstraints = false
         artist.backgroundColor = UIColor.white
         artist.placeholder = "Search artist"
@@ -41,7 +41,7 @@ class SearchContentView: UIView {
         artist.rightAnchor.constraint(equalTo: rightAnchor, constant:-10).isActive = true
     }
     
-    func customizeSearchTrack() {
+    func customizeTrack() {
         track.translatesAutoresizingMaskIntoConstraints = false
         track.backgroundColor = UIColor.white
         track.placeholder = "Search track"
@@ -51,7 +51,7 @@ class SearchContentView: UIView {
         track.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true
     }
     
-    func customizeSeaarchButton() {
+    func customizeSend() {
         send.translatesAutoresizingMaskIntoConstraints = false
         send.setTitle("Search", for: UIControl.State.normal)
         send.backgroundColor = UIColor.white
