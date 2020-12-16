@@ -26,12 +26,14 @@ class SearchViewController: UIViewController {
         //MARK: -  Query elements
         
         let searchContent = SearchContentView()
-        searchContent.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(searchContent)
+        
+        searchContent.translatesAutoresizingMaskIntoConstraints = false
+        let safeArea = view.safeAreaLayoutGuide
+        searchContent.topAnchor.constraint(equalToSystemSpacingBelow: safeArea.topAnchor, multiplier: 1.0).isActive = true
+        safeArea.bottomAnchor.constraint(equalToSystemSpacingBelow: searchContent.bottomAnchor, multiplier: 1.0).isActive = true
         searchContent.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         searchContent.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        searchContent.heightAnchor.constraint(equalToConstant: view.frame.height).isActive = true
-        searchContent.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
     }
     

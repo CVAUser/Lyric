@@ -57,7 +57,7 @@ class SearchContentView: UIView {
         searchButton.backgroundColor = UIColor.white
         searchButton.tintColor = UIColor.black
         searchButton.layer.cornerRadius = 5
-//        searchButton.clipsToBounds = true
+        searchButton.clipsToBounds = true
         searchButton.topAnchor.constraint(equalTo: searchTrack.bottomAnchor, constant: 30).isActive = true
         searchButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
         searchButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true
