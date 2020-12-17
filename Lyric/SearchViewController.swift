@@ -88,7 +88,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
             search.endEditing(true)
         }
         
-        print("\(String(describing: artistField))")
+        print("\(String(describing: query.artist))")
         print("\(String(describing: trackField))")
     }
     
