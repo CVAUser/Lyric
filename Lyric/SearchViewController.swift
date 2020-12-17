@@ -53,6 +53,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
 
         
     }
+    
+    //Filling with data internal variables
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let search = searchContent {
             switch textField {
@@ -66,6 +68,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let search = searchContent {
             switch textField {
@@ -81,7 +84,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func sendQuery() {
-        searchContent?.endEditing(true)
+        if let search = searchContent {
+            search.endEditing(true)
+        }
+        
         print("\(String(describing: artistField))")
         print("\(String(describing: trackField))")
     }
