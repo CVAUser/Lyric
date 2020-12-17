@@ -11,8 +11,8 @@ import UIKit
 class SearchViewController: UIViewController, UITextFieldDelegate {
     
     var searchContent: SearchContentView?
-    var artistField: UITextField?
-    var trackField: UITextField?
+    var artistField: String?
+    var trackField: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +54,17 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print("\(String(describing: textField.text))")
+        if let search = searchContent {
+            switch textField {
+            case search.artist:
+                artistField = textField.text
+            case search.track:
+                trackField = textField.text
+            default:
+                print("Default Field")
+                
+            }
+        }
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let search = searchContent {
@@ -71,7 +81,9 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func sendQuery() {
-        print("Touch")
+        searchContent?.endEditing(true)
+        print("\(String(describing: artistField))")
+        print("\(String(describing: trackField))")
     }
     
     @objc func selectionComplete() {
