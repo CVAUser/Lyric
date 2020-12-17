@@ -11,33 +11,43 @@ import UIKit
 class SearchViewController: UIViewController, UITextFieldDelegate {
     
     var searchContent: SearchContentView?
+    var artistField: UITextField?
+    var trackField: UITextField?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
 
 //MARK: - Config navigation interface
-//Создание правой кнопки навигационного бара
+        
+        //Создание правой кнопки навигационного бара
         let done = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(selectionComplete))
         self.navigationItem.setRightBarButton(done, animated: true)
         
-//Заголовок контроллера в навигационном баре
+        //Заголовок контроллера в навигационном баре
         self.navigationItem.title = "Search"
         
-        //MARK: -  Content of search elements
+//MARK: -  Content of search elements
         
         searchContent = SearchContentView()
         if let search = searchContent {
             view.addSubview(search)
- //Layout
+            
+            //Configuring layout
+            
+            //Lets modify the view’s size and location using Auto Layout
             search.translatesAutoresizingMaskIntoConstraints = false
+            //Display view that is not covered by navigation bars, tab bars, toolbars, and other ancestor views
             let safeArea = view.safeAreaLayoutGuide
+            //Constraints using Auto Layout
             search.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
             safeArea.bottomAnchor.constraint(equalTo: search.bottomAnchor).isActive = true
             search.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
             search.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
             
             search.artist.delegate = self
+            search.track.delegate = self
+            search.send.addTarget(self, action: #selector(sendQuery), for: .touchDown)
         }
         
 
@@ -51,12 +61,19 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
             switch textField {
             case search.artist:
                 search.track.becomeFirstResponder()
+            case search.track:
+                textField.resignFirstResponder()
             default:
                 textField.resignFirstResponder()
             }
         }
         return false
     }
+    
+    @objc func sendQuery() {
+        print("Touch")
+    }
+    
     @objc func selectionComplete() {
         
     }
