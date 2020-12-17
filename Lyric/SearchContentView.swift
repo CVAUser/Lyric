@@ -9,13 +9,13 @@
 import UIKit
 
 class SearchContentView: UIView {
-    private let artist = UITextField()
-    private let track = UITextField()
-    private let send = UIButton.init(type: UIButton.ButtonType.system)
+    let artist = UITextField()
+    let track = UITextField()
+    let send = UIButton.init(type: UIButton.ButtonType.system)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.lightGray
+        backgroundColor = .lightGray
         addSubview(artist)
         addSubview(track)
         addSubview(send)

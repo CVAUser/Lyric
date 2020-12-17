@@ -8,7 +8,9 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, UITextFieldDelegate {
+    
+    var searchContent: SearchContentView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,19 +26,37 @@ class SearchViewController: UIViewController {
         
         //MARK: -  Content of search elements
         
-        let searchContent = SearchContentView()
-        view.addSubview(searchContent)
-//Layout
-        searchContent.translatesAutoresizingMaskIntoConstraints = false
-        let safeArea = view.safeAreaLayoutGuide
-        searchContent.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
-        safeArea.bottomAnchor.constraint(equalTo: searchContent.bottomAnchor).isActive = true
-        searchContent.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        searchContent.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-    }
-    
+        searchContent = SearchContentView()
+        if let search = searchContent {
+            view.addSubview(search)
+ //Layout
+            search.translatesAutoresizingMaskIntoConstraints = false
+            let safeArea = view.safeAreaLayoutGuide
+            search.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
+            safeArea.bottomAnchor.constraint(equalTo: search.bottomAnchor).isActive = true
+            search.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+            search.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+            
+            search.artist.delegate = self
+        }
+        
 
-    
+        
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("\(String(describing: textField.text))")
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let search = searchContent {
+            switch textField {
+            case search.artist:
+                search.track.becomeFirstResponder()
+            default:
+                textField.resignFirstResponder()
+            }
+        }
+        return false
+    }
     @objc func selectionComplete() {
         
     }
