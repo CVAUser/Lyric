@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct Query {
+struct Que {
     var mimeType: String
 }

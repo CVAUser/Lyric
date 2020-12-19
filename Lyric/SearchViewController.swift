@@ -33,7 +33,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         if let search = searchContent {
             view.addSubview(search)
             
-            //Configuring layout
+            //Config layout
             
             //Lets modify the view’s size and location using Auto Layout
             search.translatesAutoresizingMaskIntoConstraints = false
@@ -55,16 +55,24 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     }
     
     //Filling with data internal variables
+    //Do not send empty search requests, check fields
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let search = searchContent {
             switch textField {
             case search.artist:
-                artistField = textField.text
+                if textField.text!.isEmpty {
+                    artistField = nil
+                } else {
+                    artistField = textField.text
+                }
             case search.track:
-                trackField = textField.text
+                if textField.text!.isEmpty {
+                    trackField = nil
+                } else {
+                   trackField = textField.text
+                }
             default:
                 print("Default Field")
-                
             }
         }
     }
@@ -87,9 +95,14 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         if let search = searchContent {
             search.endEditing(true)
         }
+        if (artistField != nil) || (trackField != nil) {
+            print("\(String(describing: artistField))")
+            print("\(String(describing: trackField))")
+        } else {
+            print("Сторки пустые")
+        }
         
-        print("\(String(describing: query.artist))")
-        print("\(String(describing: trackField))")
+        
     }
     
     @objc func selectionComplete() {
