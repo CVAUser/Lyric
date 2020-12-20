@@ -96,6 +96,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
             search.endEditing(true)
         }
         if (artistField != nil) || (trackField != nil) {
+            
             print("\(String(describing: artistField))")
             print("\(String(describing: trackField))")
         } else {
