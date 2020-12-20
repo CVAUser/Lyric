@@ -20,11 +20,11 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
 
 //MARK: - Config navigation interface
         
-        //Создание правой кнопки навигационного бара
+        //Creating the right navigation bar button
         let done = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(selectionComplete))
         self.navigationItem.setRightBarButton(done, animated: true)
         
-        //Заголовок контроллера в навигационном баре
+        //Controller title in nav bar
         self.navigationItem.title = "Search"
         
 //MARK: -  Content of search elements
@@ -95,12 +95,11 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         if let search = searchContent {
             search.endEditing(true)
         }
-        if (artistField != nil) || (trackField != nil) {
-            
-            print("\(String(describing: artistField))")
-            print("\(String(describing: trackField))")
+        if let author = artistField {
+            let url = Musixmatch.api.makeSearchQueryURL(artist: author, track: trackField)
+            print(url)
         } else {
-            print("Сторки пустые")
+            print("Форма поиска Artist должно быть обязательно заполнено")
         }
         
         

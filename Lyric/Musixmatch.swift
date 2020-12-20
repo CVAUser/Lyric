@@ -13,14 +13,32 @@ import Foundation
 enum Method: String {
     case artist = "artist.search"
     case track = "track.search"
+    case lyric = "matcher.lyrics.get"
 }
+
 struct Musixmatch {
-    init() {}
-    private let query = Musixmatch()
+    private init() {}
+    static let api = Musixmatch()
     
-    let mimeType: String = "text/plain"
-    let scheme: String = "http"
-    let host: String = "api.musixmatch.com"
-    var path: String = "/ws/1.1/"
-//    static var method: String?
+    var urlParts: URLComponents {
+        var urlParts = URLComponents()
+        urlParts.scheme = "http"
+        urlParts.host = "api.musixmatch.com"
+        urlParts.queryItems = Array.init()
+        urlParts.queryItems?.append(URLQueryItem.init(name: "apikey", value: "6662451acbbf76799b0aa49b5bf236ac"))
+        return urlParts
+    }
+    
+    func makeSearchQueryURL(artist: String, track: String?) -> URL {
+        var urlParts = self.urlParts
+        urlParts.queryItems?.append(URLQueryItem.init(name: "q_artist", value: artist))
+        if let song = track {
+            urlParts.path = "/ws/1.1/\(Method.lyric.rawValue)"
+            urlParts.queryItems?.append(URLQueryItem.init(name: "q_track", value: song))
+        } else {
+            urlParts.path = "/ws/1.1/\(Method.artist.rawValue)"
+        }
+        return urlParts.url!
+    }
+    
 }
