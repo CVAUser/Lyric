@@ -13,6 +13,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     var searchContent: SearchContentView?
     var artistField: String?
     var trackField: String?
+    var data: Data?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,17 +93,28 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func sendQuery() {
+        let url: URL
         if let search = searchContent {
             search.endEditing(true)
         }
         if let author = artistField {
-            let url = Musixmatch.api.makeSearchQueryURL(artist: author, track: trackField)
+            url = Musixmatch.api.makeSearchQueryURL(artist: author, track: trackField)
             print(url)
+            
+            let urlSession = URLSession.shared
+            urlSession.dataTask(with: url,
+                                completionHandler: { (data, response, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                    self.data = data
+                    let resData = String.init(data: data!, encoding: .utf8)
+                    print(resData!)
+                }
+            }).resume()
         } else {
             print("Форма поиска Artist должно быть обязательно заполнено")
         }
-        
-        
     }
     
     @objc func selectionComplete() {
