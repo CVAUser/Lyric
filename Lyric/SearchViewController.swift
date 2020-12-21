@@ -13,7 +13,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     var searchContent: SearchContentView?
     var artistField: String?
     var trackField: String?
-    var data: Data?
+    var jsonData: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,7 +99,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         }
         if let author = artistField {
             url = Musixmatch.api.makeSearchQueryURL(artist: author, track: trackField)
-            print(url)
             
             let urlSession = URLSession.shared
             urlSession.dataTask(with: url,
@@ -107,9 +106,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
                 if let error = error {
                     print(error.localizedDescription)
                 } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
-                    self.data = data
-                    let resData = String.init(data: data!, encoding: .utf8)
-                    print(resData!)
+                    self.jsonData = String.init(data: data!, encoding: .utf8)
                 }
             }).resume()
         } else {
