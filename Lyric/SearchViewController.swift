@@ -97,9 +97,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         if let search = searchContent {
             search.endEditing(true)
         }
-        if let artistField = artistField {
-            url = Musixmatch.api.makeSearchQueryURL(artist: artistField, track: trackField)
-            
+        if let artistField = artistField, let trackField = trackField {
+            print("Поля заполнены")
+            url = Musixmatch.query.makeUrl(method: .lyric, artist: artistField, track: trackField)
+            print(url)
             let urlSession = URLSession.shared
             urlSession.dataTask(with: url,
                                 completionHandler: { (data, response, error) in
@@ -107,11 +108,12 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
                     print(error.localizedDescription)
                 } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
                     self.jsonData = String.init(data: data!, encoding: .utf8)
+                    print(self.jsonData!)
                 }
             }).resume()
             
         } else {
-            print("Форма поиска Artist должно быть обязательно заполнено")
+            print("Форма поиска Artist должна быть обязательно заполнена")
         }
     }
     

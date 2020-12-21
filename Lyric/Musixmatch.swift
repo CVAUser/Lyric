@@ -15,9 +15,11 @@ enum Method: String {
     case track = "track.search"
     case lyric = "matcher.lyrics.get"
 }
+
 struct Musixmatch {
     private init() {}
-    static let api = Musixmatch()
+    static let query = Musixmatch()
+    var lyric = Lyric.init(message: <#T##String#>)
     
     private var urlParts: URLComponents {
         var urlParts = URLComponents()
@@ -28,16 +30,16 @@ struct Musixmatch {
         return urlParts
     }
     
-    func makeSearchQueryURL(artist: String, track: String?) -> URL {
+    func makeUrl(method: Method, artist: String, track: String) -> URL {
         var urlParts = self.urlParts
+        
+        urlParts.path = "/ws/1.1/\(method.rawValue)"
         urlParts.queryItems?.append(URLQueryItem.init(name: "q_artist", value: artist))
-        if let song = track {
-            urlParts.path = "/ws/1.1/\(Method.lyric.rawValue)"
-            urlParts.queryItems?.append(URLQueryItem.init(name: "q_track", value: song))
-        } else {
-            urlParts.path = "/ws/1.1/\(Method.artist.rawValue)"
-        }
+        urlParts.queryItems?.append(URLQueryItem.init(name: "q_track", value: track))
+        
         return urlParts.url!
-    }
-    
+    }    
+}
+struct Lyric {
+    var message: String
 }
