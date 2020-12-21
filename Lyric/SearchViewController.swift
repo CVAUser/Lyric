@@ -97,8 +97,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         if let search = searchContent {
             search.endEditing(true)
         }
-        if let author = artistField {
-            url = Musixmatch.api.makeSearchQueryURL(artist: author, track: trackField)
+        if let artistField = artistField {
+            url = Musixmatch.api.makeSearchQueryURL(artist: artistField, track: trackField)
             
             let urlSession = URLSession.shared
             urlSession.dataTask(with: url,
@@ -109,6 +109,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
                     self.jsonData = String.init(data: data!, encoding: .utf8)
                 }
             }).resume()
+            
         } else {
             print("Форма поиска Artist должно быть обязательно заполнено")
         }

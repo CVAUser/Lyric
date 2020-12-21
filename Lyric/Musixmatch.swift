@@ -15,12 +15,11 @@ enum Method: String {
     case track = "track.search"
     case lyric = "matcher.lyrics.get"
 }
-
 struct Musixmatch {
     private init() {}
     static let api = Musixmatch()
     
-    var urlParts: URLComponents {
+    private var urlParts: URLComponents {
         var urlParts = URLComponents()
         urlParts.scheme = "http"
         urlParts.host = "api.musixmatch.com"
