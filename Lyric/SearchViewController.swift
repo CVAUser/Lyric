@@ -107,8 +107,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
                 if let error = error {
                     print(error.localizedDescription)
                 } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
-                    self.jsonData = String.init(data: data!, encoding: .utf8)
-                    print(self.jsonData!)
+                    serialize(json: data!)
                 }
             }).resume()
             
