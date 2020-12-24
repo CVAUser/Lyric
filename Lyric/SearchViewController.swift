@@ -93,27 +93,35 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func sendQuery() {
-        let url: URL
+        var url: URL?
         if let search = searchContent {
             search.endEditing(true)
         }
         if let artistField = artistField, let trackField = trackField {
             print("Поля заполнены")
-            url = Musixmatch.query.makeUrl(method: .lyric, artist: artistField, track: trackField)
+            url = Musixmatch.query.makeUrl(artist: artistField, track: trackField)
+            
+        } else  if let artistField = artistField {
+            url = Musixmatch.query.makeArtistUrl(artist: artistField)
+        } else {
+            print("Форма поиска Artist должна быть обязательно заполнена")
+
+        }
+        
+        if let url = url {
             print(url)
             let urlSession = URLSession.shared
             urlSession.dataTask(with: url,
                                 completionHandler: { (data, response, error) in
-                if let error = error {
-                    print(error.localizedDescription)
-                } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
-                    serialize(json: data!)
-                }
+                                    if let error = error {
+                                        print(error.localizedDescription)
+                                    } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                                        serialize(json: data!)
+                                        
+                                    }
             }).resume()
-            
-        } else {
-            print("Форма поиска Artist должна быть обязательно заполнена")
         }
+        
     }
     
     @objc func selectionComplete() {
