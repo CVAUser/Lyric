@@ -116,7 +116,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
                                     if let error = error {
                                         print(error.localizedDescription)
                                     } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
-                                        serialize(json: data!)
+                                        let lyric = Musixmatch.query.serialize(json: data!)
+                                        print(lyric)
                                         
                                     }
             }).resume()
